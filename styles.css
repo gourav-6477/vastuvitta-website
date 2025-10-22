@@ -1,0 +1,1468 @@
+/*
+==================================================
+STYLES.CSS - VASTUVITAA
+==================================================
+
+TABLE OF CONTENTS:
+1.  GLOBAL STYLES (Variables, Reset, Typography)
+2.  GENERAL UTILITIES (Buttons, Animations)
+3.  SITE STRUCTURE (Header, Navigation, Footer)
+4.  MOBILE NAVIGATION
+5.  HERO SECTION (Video & Page Headers)
+6.  INTRODUCTION SECTION (Homepage)
+7.  "SELECTED WORKS" (Homepage - .project-grid)
+8.  "OUR EXPERTISE" (Homepage - .focus-grid)
+9.  "OUR PROCESS" (Homepage - .process-steps)
+10. "OUR TEAM" SECTION
+11. TESTIMONIALS (Parallax & Slider)
+12. "WORKS" PAGE GALLERY (.project-gallery-grid)
+13. SINGLE PROJECT PAGE
+14. CONTACT PAGE
+15. RESPONSIVE MEDIA QUERIES
+
+==================================================
+*/
+
+/* --- 1. GLOBAL STYLES --- */
+:root {
+    /* Fonts */
+    --font-serif: 'Lora', serif;
+    --font-sans: 'Plus Jakarta Sans', sans-serif;
+    --cursive-font: "Raleway", sans-serif;
+
+    /* Primary Palette */
+    --color-dark: #2C3E50;
+    --color-light: #FDFBF5;
+    --color-gray: #7F8C8D;
+    --color-accent: #e74d3c;
+
+    /* Secondary Palette (from Team section) */
+    --text-dark: #333;
+    --text-accent-gold: #c7a17a;
+    --text-light-gray: #666;
+    --bg-light-white: #ffffff;
+    --bg-accent-light-beige: #fdf8f0;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    background-color: #fff;
+    color: var(--color-dark);
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: 4rem;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+a {
+    color: var(--color-dark);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--color-accent);
+}
+
+.cursive {
+    font-family: var(--cursive-font);
+    font-size: 2.2rem;
+    font-weight: 700;
+}
+
+.content-section {
+    padding: 3rem 0;
+}
+
+.bg-light {
+    background-color: var(--color-light);
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* --- 2. GENERAL UTILITIES (Buttons, Animations) --- */
+
+/* General Purpose Button */
+.btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    border: 1px solid var(--color-dark);
+    margin-top: 1rem;
+    font-weight: 500;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    color: var(--color-dark);
+}
+
+.btn:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-light);
+    z-index: -2;
+}
+
+.btn:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: var(--color-dark);
+    transition: all 0.4s ease;
+    z-index: -1;
+}
+
+.btn:hover {
+    color: #fff;
+}
+
+.btn:hover:before {
+    width: 100%;
+}
+
+/* Page Load Fade-in */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Scroll-Reveal Animations */
+.reveal {
+    position: relative;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- 3. SITE STRUCTURE (Header, Navigation, Footer) --- */
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.7rem 1rem;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    transition: all 0.4s ease-in-out;
+    background-color: rgba(253, 251, 245, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo-link {
+    font-size: 1.7rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.logo-image {
+    height: 40px;
+    width: auto;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: var(--font-serif);
+    color: var(--color-dark);
+}
+
+.main-nav {
+    transition: transform 0.5s ease-in-out;
+}
+
+.main-nav ul {
+    display: flex;
+    list-style: none;
+}
+
+.main-nav ul li {
+    margin-left: 2rem;
+}
+
+.main-nav ul li a {
+    color: var(--color-dark);
+}
+
+/* Smooth Animated Underline for Nav Links */
+.main-nav a {
+    position: relative;
+}
+
+.main-nav a.active {
+    color: var(--color-accent) !important;
+}
+
+.main-nav a:not(.active):after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    display: block;
+    margin-top: 5px;
+    right: 0;
+    background: currentColor;
+    transition: width 0.3s ease;
+}
+
+.main-nav a:hover:after {
+    width: 100%;
+    left: 0;
+}
+
+.menu-toggle {
+    display: none;
+}
+
+/* Footer */
+.main-footer {
+    background: var(--color-dark);
+    color: var(--color-light);
+    padding: 4rem 0;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.footer-col h4 {
+    font-family: var(--font-serif);
+    margin-bottom: 1rem;
+}
+
+.footer-col p {
+    color: var(--color-gray);
+    font-size: 0.9rem;
+}
+
+/* --- 4. MOBILE NAVIGATION --- */
+
+.mobile-nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--color-light);
+    z-index: 99;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(100%);
+    transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.mobile-nav-overlay.is-open {
+    transform: translateX(0);
+}
+
+.mobile-nav-overlay ul {
+    list-style: none;
+    text-align: center;
+}
+
+.mobile-nav-overlay ul li {
+    margin: 2rem 0;
+}
+
+.mobile-nav-overlay ul li a {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    color: var(--color-dark);
+    font-weight: 600;
+}
+
+/* --- 5. HERO SECTION (Video & Page Headers) --- */
+
+.hero-section {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    overflow: hidden;
+}
+
+.hero-video,
+.hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    max-width: 800px;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 1rem auto 0;
+}
+
+.hero-content h1,
+.hero-content p {
+    text-shadow: 0 2px 15px rgba(0, 0, 0, 0.6);
+}
+
+/* Generic Page Header (like on Works page) */
+.page-header {
+    background-color: var(--color-light);
+    padding: 6rem 0;
+    text-align: center;
+}
+
+.page-header p {
+    font-size: 1.2rem;
+    color: var(--color-gray);
+    max-width: 600px;
+    margin: 1rem auto 0;
+}
+
+.works-page .hero-section {
+    height: 50vh;
+    min-height: 400px;
+}
+
+/* Final CTA Section */
+.cta-section h2 {
+    font-size: 3rem;
+}
+
+.cta-section p {
+    margin-top: 0;
+    margin-bottom: 2rem;
+}
+
+/* --- 6. INTRODUCTION SECTION (Homepage) --- */
+
+.introduction-section {
+    padding: 80px 0;
+    font-family: 'Poppins', sans-serif;
+    background-image: url('./assets/Perfection.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: #efe9d5;
+}
+
+.introduction-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+
+.intro-text {
+    flex: 1;
+}
+
+.intro-text h2 {
+    font-size: 2.5rem;
+    color: var(--color-accent);
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.intro-text p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.intro-stats {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+}
+
+.stat-item {
+    text-align: left;
+}
+
+.stat-number {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    display: block;
+    line-height: 1.1;
+}
+
+.stat-description {
+    font-size: 1rem;
+    color: #333;
+    margin-top: 5px;
+}
+
+/* --- 7. "SELECTED WORKS" (Homepage - .project-grid) --- */
+
+/* * This is the style for the "Selected Works" grid on the homepage.
+ * It features an text overlay on hover.
+*/
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 1rem 0;
+}
+
+/* We scope this card style to its parent grid */
+.project-grid .project-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, filter 0.3s ease, opacity 0.3s ease;
+}
+
+.project-grid .project-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.project-grid .project-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
+    color: white;
+    padding: 2rem 1.5rem 1.5rem;
+    /* This transform is for the old "slide-in" effect. 
+       If you want the overlay permanent, remove the transform/opacity lines. */
+    transform: translateY(100%);
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.project-grid .project-info h3 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.project-grid .project-info p {
+    margin: 0.25rem 0 0;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+/* Hover Effects for "Selected Works" */
+.project-grid .project-card:hover {
+    transform: scale(1.2); /* User wanted 1.2, then 1.05. Using 1.05 as it's less aggressive. */
+    z-index: 10;
+}
+
+.project-grid .project-card:hover img {
+    transform: scale(1.1); /* Image zooms *inside* the card */
+}
+
+/* This makes the text overlay slide in */
+.project-grid .project-card:hover .project-info {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Blur effect for other cards */
+.project-grid:hover .project-card:not(:hover) {
+    filter: blur(3px);
+    opacity: 0.7;
+}
+
+
+/* --- 8. "OUR EXPERTISE" (Homepage - .focus-grid) --- */
+
+.focus-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+}
+
+.focus-grid .service-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: visible;
+    z-index: 10;
+    transition: transform 0.4s ease, filter 0.4s ease, opacity 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Focus & Blur Effect */
+.focus-grid:hover .service-card {
+    filter: blur(4px);
+    opacity: 0.6;
+    transform: scale(0.98);
+}
+
+.focus-grid .service-card:hover {
+    filter: blur(0);
+    opacity: 1;
+    transform: scale(1.2);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    z-index: 20;
+}
+
+.card-inner-content {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 2.5rem;
+    position: relative;
+    z-index: 5;
+}
+
+/* "Roots" Effect */
+.root {
+    position: absolute;
+    width: 2px;
+    height: 20px;
+    background-color: #AC8F60;
+    opacity: 0;
+    transform: scaleY(0);
+    transition: all 0.3s ease-out;
+}
+
+.service-card:hover .root {
+    opacity: 1;
+    transform: scaleY(1);
+}
+
+.root-1 {
+    top: -20px;
+    left: 30%;
+    transform-origin: bottom;
+    transition-delay: 0.1s;
+}
+
+.root-2 {
+    bottom: -20px;
+    left: 60%;
+    transform-origin: top;
+    transition-delay: 0.2s;
+}
+
+.root-3 {
+    top: 50%;
+    left: -20px;
+    width: 20px;
+    height: 2px;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition-delay: 0.3s;
+}
+
+.service-card:hover .root-3 {
+    transform: scaleX(1);
+}
+
+.focus-grid .service-icon {
+    margin: 0 auto 1.5rem auto;
+    width: 60px;
+    height: 60px;
+    background-color: #f0f0f0;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.focus-grid .service-icon svg {
+    width: 30px;
+    height: 30px;
+    color: #AC8F60;
+}
+
+.focus-grid .service-card h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #222;
+    margin-bottom: 1rem;
+}
+
+.focus-grid .service-card p {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Simple Services Grid (if used elsewhere) */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    text-align: left;
+    margin-top: 3rem;
+    align-items: stretch;
+}
+
+.service-card {
+    border: 1px solid #e0e0e0;
+    padding: 2rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.service-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.service-card-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.service-icon {
+    color: var(--color-accent);
+}
+
+.service-card h3 {
+    margin-bottom: 1rem;
+    font-family: var(--font-serif);
+}
+
+/* --- 9. "OUR PROCESS" (Homepage - .process-steps) --- */
+
+.process-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 4rem;
+}
+
+.process-step {
+    background: #f9f9f9;
+    border: 1px solid #eee;
+    padding: 2.5rem 2rem;
+    border-radius: 12px;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease, opacity 0.3s ease;
+}
+
+.process-step:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(172, 143, 96, 0.25);
+}
+.process-steps:hover .process-step:not(:hover) {
+    filter: blur(3px);
+    opacity: 0.7;
+}
+
+.process-step .step-number {
+    position: absolute;
+    top: 0;
+    right: 20px;
+    font-size: 6rem;
+    font-weight: 800;
+    line-height: 1;
+    color: #e9e9e9;
+    z-index: 1;
+    user-select: none;
+}
+
+.process-step h3,
+.process-step p {
+    position: relative;
+    z-index: 2;
+}
+
+.process-step h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #AC8F60;
+    margin-bottom: 1rem;
+}
+
+.process-step p {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+.process-step.reveal:nth-of-type(2) {
+    transition-delay: 0.2s;
+}
+
+.process-step.reveal:nth-of-type(3) {
+    transition-delay: 0.4s;
+}
+
+/* --- 10. "OUR TEAM" SECTION --- */
+
+.team-section {
+    background-color: var(--bg-light-white);
+    padding: 80px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.team-section h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    color: var(--text-dark);
+    margin-bottom: 70px;
+    font-weight: 700;
+}
+
+.team-grid {
+    display: grid;
+    /* This forces a 2-column grid */
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 50px 30px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.team-card {
+    text-align: center;
+}
+
+
+.team-image.shape-arch {
+    width: 200px !important;
+    height: 300px !important;
+    margin: 0 auto 20px auto !important;
+    overflow: hidden !important;
+    border-radius: 100px 100px 0 0 !important; /* 60px top, 0px bottom */
+    clip-path: none !important; /* Just in case */
+}
+.team-image-reverse.shape-arch-reverse {
+    width: 200px !important;
+    height: 300px !important;
+    margin: 0 auto 20px auto !important;
+    overflow: hidden !important;
+    border-radius: 0 0 100px 100px !important; /* 60px top, 0px bottom */
+    clip-path: none !important; /* Just in case */
+}
+.team-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+}
+.team-image-reverse img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+}
+
+/* Team Image Shapes */
+.shape-circle {
+    border-radius: 50%;
+}
+
+
+
+.shape-blob {
+    clip-path: polygon(41% 0, 75% 15%, 100% 50%, 75% 85%, 41% 100%, 15% 79%, 0 50%, 15% 21%);
+}
+
+.team-info {
+    padding: 0 10px;
+}
+
+.team-info h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    font-weight: 600;
+    margin: 0 0 8px 0;
+}
+
+.team-info p {
+    font-family: 'Lato', sans-serif;
+    font-size: 1rem;
+    color: var(--text-accent-gold);
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Team Decorative Shapes */
+.team-section::before {
+    content: '';
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background-color: var(--bg-accent-light-beige);
+    border-radius: 30px;
+    top: 10%;
+    left: 5%;
+    transform: rotate(45deg);
+    z-index: 0;
+    opacity: 0.8;
+}
+
+.team-section::after {
+    content: '';
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background-color: var(--bg-accent-light-beige);
+    border-radius: 50%;
+    top: 40%;
+    right: -50px;
+    z-index: 0;
+    opacity: 0.8;
+}
+
+/* --- 11. TESTIMONIALS (Parallax & Slider) --- */
+
+.testimonial-section {
+    background-image: url('assets/parallax-bg.png');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #fff;
+}
+
+.testimonial-block {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.testimonial-quote {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    line-height: 1.4;
+    margin-bottom: 2rem;
+    font-weight: 500;
+}
+
+.testimonial-author {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Testimonial Slider */
+#testimonial-slider {
+    position: relative;
+    height: 300px; /* Adjust as needed */
+    overflow: hidden;
+}
+
+.testimonial-track {
+    display: flex;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.testimonial-slide {
+    width: 100%;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+/* Fading testimonial style (if used) */
+.testimonial-block.fade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    transition: opacity 0.7s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1rem;
+}
+
+.testimonial-block.fade.active {
+    opacity: 1;
+}
+
+
+/* --- 12. "WORKS" PAGE GALLERY (.project-gallery-grid) --- */
+
+/* * This is the style for the main "Works" page.
+ * It features a permanent beige label below the image.
+*/
+
+.filter-controls {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.filter-btn {
+    background: none;
+    border: 1px solid #e0e0e0;
+    color: var(--color-gray);
+    padding: 0.6rem 1.5rem;
+    margin: 0 0.5rem;
+    cursor: pointer;
+    border-radius: 20px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+    background-color: var(--color-light);
+    border-color: var(--color-dark);
+    color: var(--color-dark);
+}
+
+.filter-btn.active {
+    background-color: var(--color-dark);
+    border-color: var(--color-dark);
+    color: #fff;
+}
+
+.project-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+/* We scope this card style to its parent grid */
+.project-gallery-grid .project-card {
+    background: #ffffff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
+    /* Added filter to transition for the focus effect */
+    transition: transform 0.4s ease, opacity 0.4s ease, filter 0.4s ease;
+}
+
+.project-image-wrapper {
+    position: relative;
+    overflow: hidden;
+    height: 250px;
+}
+
+.project-gallery-grid .project-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* The permanent beige label */
+.project-gallery-grid .project-info {
+    background: #F7F3E8;
+    padding: 1.25rem 1.5rem;
+}
+
+.project-gallery-grid .project-info h3 {
+    margin: 0 0 0.25rem 0;
+    font-size: 1.15rem;
+    color: #333;
+}
+
+.project-gallery-grid .project-info p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* Hover Effect for "Works Gallery" (Image zoom only) */
+.project-gallery-grid .project-card:hover img {
+    transform: scale(1.1);
+}
+
+/* Blur effect for other cards */
+.project-gallery-grid:hover .project-card:not(:hover) {
+    filter: blur(3px);
+    opacity: 0.7;
+}
+
+/* Class added by JS for filtering */
+.project-card.hide {
+    transform: scale(0.8);
+    opacity: 0;
+    height: 0;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+/* --- 13. SINGLE PROJECT PAGE --- */
+
+.project-hero img {
+    width: 100%;
+    height: auto;
+}
+
+.project-details-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+}
+
+.project-meta h3 {
+    margin-bottom: 1rem;
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.project-meta ul {
+    list-style: none;
+}
+
+.project-meta ul li {
+    margin-bottom: 0.5rem;
+    color: var(--color-gray);
+}
+
+.project-meta ul li strong {
+    color: var(--color-dark);
+}
+
+.project-narrative h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.project-narrative p {
+    margin-bottom: 2rem;
+    color: var(--color-gray);
+}
+
+.image-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.image-gallery-grid img {
+    width: 100%;
+    height: auto;
+}
+
+/* --- 14. CONTACT PAGE --- */
+
+.contact-page .container {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+.contact-details .page-title {
+    font-family: var(--font-serif);
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    color: var(--color-dark);
+}
+
+.contact-details .contact-intro {
+    font-family: var(--font-sans);
+    color: var(--color-gray);
+    line-height: 1.7;
+    margin-bottom: 3rem;
+    max-width: 500px;
+}
+
+.contact-details .info-section {
+    margin-bottom: 2rem;
+}
+
+.contact-details .info-section h4 {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-dark);
+}
+
+.contact-details .info-section p,
+.contact-details .info-section a {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    color: var(--color-gray);
+    line-height: 1.6;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-dark);
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    background-color: var(--color-light);
+    color: var(--color-dark);
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--color-accent);
+}
+
+.submit-btn {
+    display: inline-block;
+    padding: 0.8rem 2.5rem;
+    border: none;
+    margin-top: 1rem;
+    font-weight: 600;
+    font-family: var(--font-sans);
+    transition: all 0.4s ease;
+    background-color: var(--color-dark);
+    color: var(--color-light);
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.submit-btn:hover {
+    background-color: var(--color-accent);
+    color: #fff;
+}
+
+.map-container {
+    padding-bottom: 6rem;
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 450px;
+    border: 0;
+}
+/* =================================== */
+/* ==   CONTACT PAGE (Vanta Update)   == */
+/* =================================== */
+#contact-animation-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* This is the key: it puts it behind everything */
+    background-color:#FDFBF5 /* Fallback background */
+}
+/* 1. Make the <main> tag our stacking container */
+main.contact-page {
+    position: relative;
+    z-index: 1;
+    /* This makes sure the background covers the whole form area */
+    overflow: hidden; 
+}
+
+/* 2. Make the content sit on top of the animation */
+.contact-grid,
+.map-container {
+    position: relative;
+    z-index: 2; /* Sits on top of the z-index: 1 <main> */
+}
+
+/* 3. Give the form and details a "frosted" card look */
+.contact-details,
+.contact-form-container {
+    /* Using your --color-light with 85% opacity */
+    background-color: rgba(253, 251, 245, 0.85); 
+    
+    /* The frosted glass blur */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); 
+    
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* 4. Make the map look clean and contained */
+.map-container {
+    border-radius: 12px;
+    overflow: hidden; /* This will clip the map to the rounded corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* 5. Make the footer semi-transparent */
+.main-footer {
+    /* Using your --color-dark with 85% opacity */
+    background: rgba(44, 62, 80, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+/* --- 15. RESPONSIVE MEDIA QUERIES --- */
+
+/* For Tablets and smaller */
+@media (max-width: 992px) {
+    .introduction-section .container {
+        flex-direction: column;
+        gap: 50px;
+    }
+
+    .intro-stats {
+        width: 100%;
+    }
+
+    .intro-text h2,
+    .stat-item {
+        text-align: center;
+    }
+}
+
+/* For Mobile */
+@media (max-width: 768px) {
+    /* General Typography */
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    /* Header & Mobile Menu */
+    .main-nav {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: block;
+        background: none;
+        border: 1px solid var(--color-dark);
+        color: var(--color-dark);
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        font-size: 1rem;
+        z-index: 101;
+    }
+
+    /* Grid Layouts to 1 Column */
+    .project-grid,
+    .project-gallery-grid,
+    .footer-grid,
+    .project-details-grid,
+    .image-gallery-grid,
+    .services-grid,
+    .process-steps,
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-details-grid {
+        gap: 2rem;
+    }
+
+    /* Section Specifics */
+    .cta-section h2 {
+        font-size: 2.5rem;
+    }
+
+    .testimonial-quote {
+        font-size: 1.5rem;
+    }
+
+    /* Make homepage project card info static on mobile */
+    .project-grid .project-card .project-info {
+        position: static;
+        opacity: 1;
+        transform: translateY(0);
+        background: var(--color-dark);
+        padding: 1rem;
+    }
+
+    /* Hide decorative team shapes on mobile */
+    .team-section::before,
+    .team-section::after {
+        display: none;
+    }
+}
+
+/* =================================== */
+/* ==   ABOUT US - 80/20 ASIDE LAYOUT   == */
+/* =================================== */
+
+/* This is the main grid for the 80/20 sections */
+.about-aside-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Stacks on mobile by default */
+    gap: 2.5rem;
+    margin-top: 3rem; /* Adds space below the centered h2 */
+}
+
+/* This styles the main paragraph text in both sections */
+.philosophy-text {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--color-gray);
+    text-align: left;
+}
+
+/* This styles the 20% GIF/Image block */
+.about-aside-grid .about-gif-aside img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    
+    /* On mobile, center the GIF and don't let it get too wide */
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.about-gif-aside {
+    display: flex; /* Make it a flex container */
+    justify-content: center; /* Center horizontally if SVG is smaller than column */
+    align-items: center; /* Vertically center the SVG within its column */
+    height: 100%; /* Ensure it takes full height of its grid cell for centering */
+    margin-top: -20px;
+}
+/* --- Desktop 80/20 Split --- */
+@media (min-width: 768px) {
+
+    /* This creates the 80/20 split for "Origin" */
+    .about-aside-grid {
+        /* 4fr = 4 parts (80%), 1fr = 1 part (20%) */
+        grid-template-columns: 4fr 1fr;
+        gap: 3rem;
+        align-items: start; /* Aligns the top of the text with the top of the GIF */
+    }
+
+    /* This flips the split for "Philosophy" */
+    .about-aside-grid.layout-reverse-aside {
+        grid-template-columns: 1fr 4fr;
+    }
+
+    /* This styles the GIF/Image block on desktop */
+    .about-aside-grid .about-gif-aside img {
+        max-width: 100%; /* Allows it to fill the 20% column */
+        margin: 0; /* Resets mobile centering */
+    }
+}
+
+
+/* --- Desktop 80/20 Split --- */
+@media (min-width: 768px) {
+    .about-aside-grid {
+        /* This creates the 80/20 split */
+        /* 4fr = 4 parts (80%), 1fr = 1 part (20%) */
+        grid-template-columns: 4fr 1fr;
+        gap: 3rem;
+        align-items: start; /* Aligns the top of the text with the top of the GIF */
+    }
+
+    .about-aside-grid .about-gif-aside img {
+        max-width: 100%; /* Allows it to fill the 20% column */
+        margin: 0; /* Resets mobile centering */
+    }
+}

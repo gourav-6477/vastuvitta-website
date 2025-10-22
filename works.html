@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vastuvitaa</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="main-header">
+        <div class="logo">
+            <a href="index.html" class="logo-link">
+                <span><b>VASTUVITAA</b></span>
+            </a>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html"><b>HOME</b></a></li>
+                <li><a href="#"><b>OUR WORKS</b></a></li>
+                <li><a href="about.html"><b>ABOUT US</b></a></li>
+                <li><a href="contact.html"><b>CONTACT</b></a></li>
+            </ul>
+        </nav>
+        <button class="menu-toggle" id="menu-toggle">Menu</button>
+    </header>
+    <div class="mobile-nav-overlay">
+        <nav>
+            <ul>
+                <li><a href="#">Works</a></li>
+                <li><a href="about.html">About us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+    <main>
+        <section class="hero-section reveal">
+        <img src="./assets/works.jpeg" class="hero-video" alt="Architectural design collage"> <div class="hero-overlay"></div> 
+        <div class="hero-content">
+            <h1>OUR WORKS</h1>
+            <p>A curated selection of our projects, from private residences to public spaces.</p>
+        </div>
+    </section>
+    <section class="content-section">
+    <div class="container">
+        <div class="filter-controls">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="residence">Residence</button>
+            <button class="filter-btn" data-filter="dawars">Dawars</button>
+            <button class="filter-btn" data-filter="public">Public</button>
+        </div>
+
+        <div class="project-gallery-grid">
+
+            <div class="project-card reveal" data-category="public">
+                <div class="project-image-wrapper">
+                    <img src="./assets/Work Photos/Hospital Lifeline.jpg" alt="Hospital Lifeline">
+                </div>
+                <div class="project-info">
+                    <h3>The Lifeline Hospital</h3>
+                    <p>Sonepat, Haryana</p>
+                </div>
+            </div>
+
+            <div class="project-card reveal" data-category="public">
+                <div class="project-image-wrapper">
+                    <img src="./assets/Work Photos/Govt Senior Secondary School.jpg" alt="Govt Senior Secondary School">
+                </div>
+                <div class="project-info">
+                    <h3>Govt Senior Secondary School</h3>
+                    <p>Rewari, Haryana</p>
+                </div>
+            </div>
+
+            <div class="project-card reveal" data-category="public">
+                <div class="project-image-wrapper">
+                    <img src="./assets/Work Photos/Mini Stadium.jpg" alt="Mini Stadium">
+                </div>
+                <div class="project-info">
+                    <h3>Mini Stadium</h3>
+                    <p>Rewari, Haryana</p>
+                </div>
+            </div>
+
+            <div class="project-card reveal" data-category="public">
+                <div class="project-image-wrapper">
+                    <img src="./assets/Work Photos/Shri KVM Hospital.jpg" alt="Shri KVM Hospital">
+                </div>
+                <div class="project-info">
+                    <h3>Shri KVM Hospital</h3>
+                    <p>Karotha, Rohtak</p>
+                </div>
+            </div>
+
+            <div class="project-card reveal" data-category="dawars">
+                <div class="project-image-wrapper">
+                    <img src="./assets/Work Photos/Yudhisthir Dwar.jpg" alt="Yudhisthir Dwar">
+                </div>
+                <div class="project-info">
+                    <h3>Yudhisthir Dawar</h3>
+                    <p>Sonepat, India</p>
+                </div>
+            </div>
+
+            <div class="project-card reveal" data-category="dawars">
+                <div class="project-image-wrapper">
+                    <img src="./assets/Work Photos/Bheem Dawar.jpg" alt="Bheem Dwar">
+                </div>
+                <div class="project-info">
+                    <h3>Bheem Dawaar</h3>
+                    <p>Sonepat, India</p>
+                </div>
+            </div>
+
+            <div class="project-card reveal" data-category="dawars">
+                <div class="project-image-wrapper">
+                    <img src="./assets/Work Photos/Arjun Dawaar.jpg" alt="Arjun Dwar">
+                </div>
+                <div class="project-info">
+                    <h3>Arjun Dawaar</h3>
+                    <p>Sonepat, India</p>
+                </div>
+            </div>
+
+            <div class="project-card reveal" data-category="dawars">
+                <div class="project-image-wrapper">
+                    <img src="./assets/Work Photos/Nakul Dawar.jpg" alt="Nakul Dwar">
+                </div>
+                <div class="project-info">
+                    <h3>Nakul Dawaar</h3>
+                    <p>Sonepat, India</p>
+                </div>
+            </div>
+
+            <div class="project-card reveal" data-category="dawars">
+                <div class="project-image-wrapper">
+                    <img src="./assets/Work Photos/Sehdev Dawar.jpg" alt="Sehdev Dwar">
+                </div>
+                <div class="project-info">
+                    <h3>Sehdev Dawaar</h3>
+                    <p>Sonepat, India</p>
+                </div>
+            </div>
+
+            <div class="project-card reveal" data-category="residence">
+                <div class="project-image-wrapper">
+                    <img src="./assets/Work Photos/Designs - 1.jpg" alt="Residence - 1">
+                </div>
+                <div class="project-info">
+                    <h3>Residential Design</h3>
+                    <p>Rewari, India</p>
+                </div>
+            </div>
+
+            <div class="project-card reveal" data-category="residence">
+                <div class="project-image-wrapper">
+                    <img src="./assets/Work Photos/Designs - 2.jpg" alt="Residence - 2">
+                </div>
+                <div class="project-info">
+                    <h3>Residential Design</h3>
+                    <p>Rewari, India</p>
+                </div>
+            </div>
+
+            <div class="project-card reveal" data-category="residence">
+                <div class="project-image-wrapper">
+                    <img src="./assets/Work Photos/Designs - 3.jpg" alt="Residence - 3">
+                </div>
+                <div class="project-info">
+                    <h3>Residential Design</h3>
+                    <p>Rewari, India</p>
+                </div>
+            </div>
+
+            <div class="project-card reveal" data-category="residence">
+                <div class="project-image-wrapper">
+                    <img src="./assets/Work Photos/Designs - 4.jpg" alt="Residence - 4">
+                </div>
+                <div class="project-info">
+                    <h3>Residential Design</h3>
+                    <p>Rewari, India</p>
+                </div>
+            </div>
+
+        </div> </div>
+</section>
+</main>
+
+    <footer class="main-footer reveal">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h4>Vastuvitaa</h4>
+                <p>&copy; 2025. All Rights Reserved.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p>vastuvitaa@gmail.com</p>
+                <p>+91 89208 05660</p>
+            </div>
+            <div class="footer-col">
+                <h4>Studio</h4>
+                <p>Vastuvitaa Studio<br>Near Shyam Baba Chowk<br>Dhankhot,Gurgaon, Haryana</p>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+    
+</body>
+</html>
